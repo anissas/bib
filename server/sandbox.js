@@ -1,14 +1,13 @@
-/* eslint-disable no-console, no-process-exit */
 const michelin = require('./michelin');
-
-async function sandbox (searchLink = 'https://guide.michelin.com/fr/fr/centre-val-de-loire/veuves/restaurant/l-auberge-de-la-croix-blanche') {
+const urlMichelin = 'https://guide.michelin.com/fr/fr/restaurants/bib-gourmand/page/';
+async function sandbox (searchLink) {
   try {
     console.log(`🕵️‍♀️  browsing ${searchLink} source`);
 
     const restaurant = await michelin.scrapeRestaurant(searchLink);
-
-    console.log(restaurant);
+    na = await michelin.getData(restaurant);
     console.log('done');
+    return restaurant;
     process.exit(0);
   } catch (e) {
     console.error(e);
@@ -18,4 +17,8 @@ async function sandbox (searchLink = 'https://guide.michelin.com/fr/fr/centre-va
 
 const [,, searchLink] = process.argv;
 
-sandbox(searchLink);
+const restau = sandbox(urlMichelin);
+
+
+
+
